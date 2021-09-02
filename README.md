@@ -41,6 +41,11 @@ PS C:\> Get-UnifiedAuditLog -StartDate (Get-Date).AddDays(-7) -IntervalMinutes 1
 PS C:\> Get-UnifiedAuditLog -StartDate (Get-Date).AddDays(-1) -Verbose -WarningAction 'Continue' | Select-Object -ExpandProperty AuditData | ConvertFrom-Json -ErrorAction Continue
 
 # This setup will print an error on problematic JSON and then continue.
+
+# Example 3 specify record type search to Azure Active Directory
+
+PS C:\> Get-UnifiedAuditLog -StartDate (Get-Date).AddDays(-364) -enddate (get-Date).AddDays(-360) -IntervalMinutes 120 -ResultSize 1000 -recordtype AzureActiveDirectory -Verbose -WarningAction 'Continue' | Select-Object -ExpandProperty AuditData | ConvertFrom-Json -ErrorAction Continue
+
 ```
 
 ## Parameters
@@ -53,7 +58,7 @@ Use the short date format that's defined in the Regional Options settings on the
 
 If you don't include a timestamp in the value for this parameter, the default timestamp is 12:00 AM (midnight) on the specified date.
 
-If omitted, the default for StartDate is the 90 days before the current date, as returned by Get-Date, which corresponds roughly to the oldest logs available.
+If omitted, the default for StartDate is the 365 days before the current date, as returned by Get-Date, which corresponds roughly to the oldest logs available.
 
 ### EndDate
 
@@ -76,6 +81,11 @@ In the future one could put some logic in this cmdlet to optimize this automatic
 The ResultSize parameter specifies the maximum number of results to return (per batch). The default value is 100, maximum is 5,000.
 
 Larger values can reduce the number of batches required to collect each interval's worth of events.  Unless your network connection is unreliable, you can typically keep this at or above 1000 without any issues.
+
+### RecordType
+
+You can specify to search from specific record types from Audit Log. For example from SharePoint or AzureActiveDirectory.
+Complete list of record types you can find here: [record types](https://docs.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-schema#auditlogrecordtype).
 
 ## Notes
 
