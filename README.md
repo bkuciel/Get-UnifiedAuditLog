@@ -2,7 +2,11 @@
 
 ## Synopsis
 
-Gets events from the Office 365 unified audit log and outputs them into the pipeline.
+Gets events from the Office 365 unified audit log and outputs them into the pipeline. Logs can be searched up to 365 days back from current day.
+
+This project has been forked from [counteravtive/Get-UnifiedAuditLog](https://github.com/counteractive/Get-UnifiedAuditLog) with modification of allowed time of logs that can be retrived - 365 days before the current date. 
+
+It seems that Microsoft has not announced such possibility and regarding to Microsoft documentation logs can be searched only up to 90 days back from the current day.
 
 ## Description
 
