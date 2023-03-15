@@ -8,6 +8,9 @@ This project has been forked from [counteravtive/Get-UnifiedAuditLog](https://gi
 
 It seems that Microsoft has not announced such possibility and regarding to Microsoft documentation logs can be searched only up to 90 days back from the current day.
 
+## Edit
+15.03.2023: Seems that it's no longer possible to query logs older than 90 days
+
 ## Description
 
 The `Get-UnifiedAuditLog` cmdlet is a wrapper around the [`Search-UnifiedAuditLog`](https://docs.microsoft.com/en-us/powershell/module/exchange/search-unifiedauditlog?view=exchange-ps) cmdlet that allows you to get data from the unified auditing log available in the ~~Office~~ Microsoft 365 Security & Compliance Center. For more information, see "Search the audit log" in the [Microsoft 365 Security & Compliance Center](https://docs.microsoft.com/en-us/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance?view=o365-worldwide#search-the-audit-log).  It is renamed because it does not support "search" parameters outside of the start and end dates, it is designed for bulk data gathering.
